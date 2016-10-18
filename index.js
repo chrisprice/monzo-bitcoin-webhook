@@ -13,6 +13,10 @@ wallet({ bws, mnemonic })
     const app = express();
     app.use(bodyParser.json());
 
+    app.get('/', (req, res) => {
+      res.sendStatus(200);
+    });
+
     app.post('/:secret', (req, res) => {
       if (req.params.secret !== secret) {
         return res.sendStatus(404);
