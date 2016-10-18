@@ -25,7 +25,10 @@ wallet({ bws, mnemonic })
       }
 
       send(transaction)
-        .then(() => res.sendStatus(200))
+        .then(() => {
+          console.log(`Sent ${transaction.amount} to ${transaction.address} (${transaction.message})`);
+          res.sendStatus(200);
+        })
         .catch((e) => {
           console.error(e);
           res.sendStatus(500);
